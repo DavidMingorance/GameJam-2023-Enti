@@ -315,8 +315,18 @@ GameObject:
   m_Component:
   - component: {fileID: 829558565}
   - component: {fileID: 829558564}
+<<<<<<< HEAD
   - component: {fileID: 829558567}
   - component: {fileID: 829558569}
+=======
+<<<<<<< HEAD
+  - component: {fileID: 829558567}
+  - component: {fileID: 829558566}
+=======
+  - component: {fileID: 829558566}
+  - component: {fileID: 829558567}
+>>>>>>> 1a379a33f64c0a7cdaf389cb9541963c99544647
+>>>>>>> e9c23a3170a7dcbd5332980e8d1eed08d5fabdeb
   - component: {fileID: 829558568}
   m_Layer: 0
   m_Name: Abuela
@@ -392,6 +402,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+=======
+--- !u!114 &829558566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829558562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccaae3c6f2c1c4645a2dfe9230cd2815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  walkSpeed: 1
+  isGrounded: 1
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  canJump: 1
+  jumpValue: 0.1
+=======
+  walkSpeed: 4
+  isGrounded: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  canJump: 1
+  jumpValue: 0.5
+>>>>>>> 1a379a33f64c0a7cdaf389cb9541963c99544647
+>>>>>>> e9c23a3170a7dcbd5332980e8d1eed08d5fabdeb
 --- !u!50 &829558567
 Rigidbody2D:
   serializedVersion: 4
@@ -407,14 +449,23 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
+<<<<<<< HEAD
+  m_GravityScale: 3
+=======
   m_GravityScale: 1
+>>>>>>> 1a379a33f64c0a7cdaf389cb9541963c99544647
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+<<<<<<< HEAD
+--- !u!70 &829558568
+CapsuleCollider2D:
+=======
 --- !u!61 &829558568
 BoxCollider2D:
+>>>>>>> 1a379a33f64c0a7cdaf389cb9541963c99544647
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -427,6 +478,10 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+<<<<<<< HEAD
+  m_Size: {x: 0.99999994, y: 2}
+  m_Direction: 0
+=======
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -439,6 +494,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+<<<<<<< HEAD
 --- !u!114 &829558569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,6 +514,9 @@ MonoBehaviour:
     m_Bits: 0
   canJump: 1
   jumpValue: 0
+=======
+>>>>>>> 1a379a33f64c0a7cdaf389cb9541963c99544647
+>>>>>>> e9c23a3170a7dcbd5332980e8d1eed08d5fabdeb
 --- !u!1 &974652759
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +626,11 @@ GameObject:
   - component: {fileID: 1603744454}
   - component: {fileID: 1603744453}
   - component: {fileID: 1603744455}
+<<<<<<< HEAD
+  m_Layer: 6
+=======
   m_Layer: 0
+>>>>>>> 1a379a33f64c0a7cdaf389cb9541963c99544647
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
