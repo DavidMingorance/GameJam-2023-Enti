@@ -4,28 +4,69 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    //Movimiento
     public float walkSpeed;
     private float moveInput;
     public bool isGrounded;
     private Rigidbody2D rb;
     public LayerMask groundMask;
 
+    //Salto
+    public bool canJump = true;
+    public float jumpValue = 0.5f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         moveInput = Input.GetAxisRaw("Horizontal");
 
-        rb.velocity = new Vector2 (moveInput * walkSpeed, rb.velocity.y);
+        if (jumpValue == 0.0f && isGrounded)
+        {
+            rb.velocity = new Vector2(moveInput * walkSpeed, rb.velocity.y);
+        }
 
         isGrounded = Physics2D.OverlapBox(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.5f),
             new Vector2(0.9f, 0.4f), 0f, groundMask);
+
+        //Salto
+        if(Input.GetKey("Space") && isGrounded && canJump)
+        {
+            jumpValue += 0.1f;
+        }
+
+        if (Input.GetKeyDown("Space") && isGrounded && canJump)
+        {
+            rb.velocity = new Vector2(0.0f, rb.velocity.y);
+        }
+
+        if (jumpValue >= 20f && isGrounded)
+        {
+            float tempx = moveInput * walkSpeed;
+            float tempy = jumpValue;
+            rb.velocity = new Vector2(tempx, tempy);
+            Invoke("ResetJump", 0.2f);
+        }
+
+        if (Input.GetKeyUp("Space"))
+        {
+            if (isGrounded)
+            {
+                rb.velocity = new Vector2(moveInput * walkSpeed, jumpValue);
+                jumpValue = 0.0f;
+            }
+            canJump = true;
+        }
+
+        void ResetJump()
+        {
+            canJump = false;
+            jumpValue = 0f;
+
+        }
     }
 
     private void OnDrawGizmosSelected()
