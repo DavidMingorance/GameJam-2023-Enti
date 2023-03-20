@@ -33,12 +33,12 @@ public class Player : MonoBehaviour
             new Vector2(0.9f, 0.4f), 0f, groundMask);
 
         //Salto
-        if(Input.GetKey("Space") && isGrounded && canJump)
+        if(Input.GetKey("space") && isGrounded && canJump)
         {
             jumpValue += 0.1f;
         }
 
-        if (Input.GetKeyDown("Space") && isGrounded && canJump)
+        if (Input.GetKeyDown("space") && isGrounded && canJump)
         {
             rb.velocity = new Vector2(0.0f, rb.velocity.y);
         }
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
             Invoke("ResetJump", 0.2f);
         }
 
-        if (Input.GetKeyUp("Space"))
+        if (Input.GetKeyUp("space"))
         {
             if (isGrounded)
             {
