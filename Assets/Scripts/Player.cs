@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public LayerMask groundMask;
 
     //Salto
-    public bool canJump = true;
+
     public float jumpValue = 0.5f;
 
     void Start()
@@ -22,9 +22,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        moveInput = Input.GetAxisRaw("Horizontal");
+        moveInput = Input.GetAxis("Horizontal");
 
-        if (jumpValue == 0.0f && isGrounded)
+        if (!Input.GetKey("space") && isGrounded)
         {
             rb.velocity = new Vector2(moveInput * walkSpeed, rb.velocity.y);
         }
@@ -33,41 +33,35 @@ public class Player : MonoBehaviour
             new Vector2(0.9f, 0.4f), 0f, groundMask);
 
         //Salto
-        if(Input.GetKey("space") && isGrounded && canJump)
+        if(Input.GetKey("space") && isGrounded)
         {
             jumpValue += 0.1f;
         }
-
+        /*
         if (Input.GetKeyDown("space") && isGrounded && canJump)
         {
             rb.velocity = new Vector2(0.0f, rb.velocity.y);
         }
-
+        */
         if (jumpValue >= 20f && isGrounded)
         {
             float tempx = moveInput * walkSpeed;
             float tempy = jumpValue;
             rb.velocity = new Vector2(tempx, tempy);
-            Invoke("ResetJump", 0.2f);
-        }
-
-        if (Input.GetKeyUp("space"))
-        {
-            if (isGrounded)
-            {
-                rb.velocity = new Vector2(moveInput * walkSpeed, jumpValue);
-                jumpValue = 0.0f;
-            }
-            canJump = true;
-        }
-
-        void ResetJump()
-        {
-            canJump = false;
             jumpValue = 0f;
-
         }
+
+        if (Input.GetKeyUp("space") && isGrounded)
+        {
+            float tempx = moveInput * walkSpeed;
+            float tempy = jumpValue;
+            rb.velocity = new Vector2(tempx, tempy);
+            jumpValue = 0f;
+        }
+
+       
     }
+
 
     private void OnDrawGizmosSelected()
     {
