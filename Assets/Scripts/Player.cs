@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     public LayerMask groundMask;
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
