@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     //Salto
 
-    public float jumpValue = 0.5f;
+    public float jumpValue = 20f;
 
     void Start()
     {
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         //Salto
         if(Input.GetKey("space") && isGrounded)
         {
-            jumpValue += 0.1f;
+            jumpValue += 20f * Time.deltaTime;
         }
         /*
         if (Input.GetKeyDown("space") && isGrounded && canJump)
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
             float tempx = moveInput * walkSpeed;
             float tempy = jumpValue;
             rb.velocity = new Vector2(tempx, tempy);
-            jumpValue = 0f;
+            jumpValue = 10f;
         }
 
         if (Input.GetKeyUp("space") && isGrounded)
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
             float tempx = moveInput * walkSpeed;
             float tempy = jumpValue;
             rb.velocity = new Vector2(tempx, tempy);
-            jumpValue = 0f;
+            jumpValue = 10f;
         }
 
        
