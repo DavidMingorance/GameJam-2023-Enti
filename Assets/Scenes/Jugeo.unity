@@ -163,7 +163,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &66486225
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -275,7 +275,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   sr: {fileID: 0}
-  anim: {fileID: 0}
   jumpValue: 7
 --- !u!1 &202355306
 GameObject:
@@ -332,6 +331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 891553641}
   - component: {fileID: 891553640}
+  - component: {fileID: 891553642}
   m_Layer: 0
   m_Name: CollisionInferior
   m_TagString: Untagged
@@ -380,6 +380,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &891553642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891553639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e6b7185452b3734bbac7d2e0da99c55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1285202270
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +681,8 @@ GameObject:
   - component: {fileID: 2123150878}
   - component: {fileID: 2123150880}
   - component: {fileID: 2123150879}
-  m_Layer: 0
+  - component: {fileID: 2123150881}
+  m_Layer: 6
   m_Name: Mapa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26656,3 +26669,19 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &2123150881
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123150877}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
