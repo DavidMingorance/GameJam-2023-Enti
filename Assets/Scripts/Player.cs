@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
+    float xInicial, yInicial;
+
     //Movimiento
     public float walkSpeed;
     private float moveInput;
@@ -22,6 +25,8 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        xInicial = transform.position.x;
+        yInicial = transform.position.y;
 
     }
 
@@ -87,6 +92,11 @@ public class Player : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawCube(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.5f), new Vector2(0.9f, 0.2f));
+    }
+
+    public void Recolocar()
+    {
+        transform.position = new Vector3(xInicial, yInicial, 0);
     }
 
 }
