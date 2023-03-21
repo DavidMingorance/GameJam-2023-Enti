@@ -10,6 +10,11 @@ public class Player : MonoBehaviour
     public bool isGrounded;
     private Rigidbody2D rb;
     public LayerMask groundMask;
+    public SpriteRenderer sr;
+    public Animator anim;
+
+    bool canIdle = false;
+    bool canRun = true;
 
     //Salto
 
@@ -18,10 +23,16 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+
     }
 
     void Update()
     {
+
+        float moveX = Input.GetAxis("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
         moveInput = Input.GetAxis("Horizontal");
 
         if (!Input.GetKey("space") && isGrounded)
@@ -59,7 +70,62 @@ public class Player : MonoBehaviour
             jumpValue = 10f;
         }
 
-       
+
+        //Anim
+        if (rb.velocity.y > 0)
+        {
+            if (moveX > 0)
+            {
+                sr.flipX = false;
+            }
+            else if (moveX < 0)
+            {
+                sr.flipX = true;
+            }
+            //sr.sprite = jumpIMG;
+            anim.enabled = false;
+        }
+        else if (rb.velocity.y < 0)
+        {
+            if (moveX > 0)
+            {
+                sr.flipX = false;
+            }
+            else if (moveX < 0)
+            {
+                sr.flipX = true;
+            }
+           //sr.sprite = fallIMG;
+        }
+        else
+        {
+            anim.enabled = true;
+
+            if (moveX > 0 && canRun)
+            {
+                canRun = false;
+                canIdle = true;
+
+                anim.SetTrigger("Corriendo");
+                sr.flipX = false;
+            }
+            else if (moveX < 0 && canRun)
+            {
+                canRun = false;
+                canIdle = true;
+
+                anim.SetTrigger("Corriendo");
+                sr.flipX = true;
+            }
+            else if (moveX == 0 && canIdle)
+            {
+                canIdle = false;
+                canRun = true;
+
+                anim.SetTrigger("Normal");
+            }
+        }
+
     }
 
 
@@ -68,4 +134,5 @@ public class Player : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawCube(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.5f), new Vector2(0.9f, 0.2f));
     }
+
 }
