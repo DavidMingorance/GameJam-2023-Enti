@@ -13,9 +13,6 @@ public class Player : MonoBehaviour
     public SpriteRenderer sr;
     public Animator anim;
 
-    bool canIdle = false;
-    bool canRun = true;
-
     //Salto
 
     public float jumpValue = 20f;
@@ -38,6 +35,7 @@ public class Player : MonoBehaviour
         if (!Input.GetKey("space") && isGrounded)
         {
             rb.velocity = new Vector2(moveInput * walkSpeed, rb.velocity.y);
+            anim.SetBool("Jump", true);
         }
 
         isGrounded = Physics2D.OverlapBox(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.5f),
@@ -47,6 +45,8 @@ public class Player : MonoBehaviour
         if(Input.GetKey("space") && isGrounded)
         {
             jumpValue += 20f * Time.deltaTime;
+            anim.SetBool("Jump", true);
+
         }
         /*
         if (Input.GetKeyDown("space") && isGrounded && canJump)
@@ -68,62 +68,16 @@ public class Player : MonoBehaviour
             float tempy = jumpValue;
             rb.velocity = new Vector2(tempx, tempy);
             jumpValue = 10f;
+            anim.SetBool("Jump", true);
         }
 
-
-        //Anim
-        if (rb.velocity.y > 0)
+        if (moveInput == 0)
         {
-            if (moveX > 0)
-            {
-                sr.flipX = false;
-            }
-            else if (moveX < 0)
-            {
-                sr.flipX = true;
-            }
-            //sr.sprite = jumpIMG;
-            anim.enabled = false;
-        }
-        else if (rb.velocity.y < 0)
-        {
-            if (moveX > 0)
-            {
-                sr.flipX = false;
-            }
-            else if (moveX < 0)
-            {
-                sr.flipX = true;
-            }
-           //sr.sprite = fallIMG;
+            anim.SetBool("Andando", false);
         }
         else
         {
-            anim.enabled = true;
-
-            if (moveX > 0 && canRun)
-            {
-                canRun = false;
-                canIdle = true;
-
-                anim.SetTrigger("Corriendo");
-                sr.flipX = false;
-            }
-            else if (moveX < 0 && canRun)
-            {
-                canRun = false;
-                canIdle = true;
-
-                anim.SetTrigger("Corriendo");
-                sr.flipX = true;
-            }
-            else if (moveX == 0 && canIdle)
-            {
-                canIdle = false;
-                canRun = true;
-
-                anim.SetTrigger("Normal");
-            }
+            anim.SetBool("Andando", true);
         }
 
     }
