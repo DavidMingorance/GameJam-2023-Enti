@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
+    float xInicial, yInicial;
+
     //Movimiento
     public float walkSpeed;
     private float moveInput;
@@ -11,7 +14,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     public LayerMask groundMask;
     public SpriteRenderer sr;
-    public Animator anim;
+ 
 
     //Salto
 
@@ -21,7 +24,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
+        xInicial = transform.position.x;
+        yInicial = transform.position.y;
 
     }
 
@@ -35,6 +39,10 @@ public class Player : MonoBehaviour
         if (!Input.GetKey("space") && isGrounded)
         {
             rb.velocity = new Vector2(moveInput * walkSpeed, rb.velocity.y);
+<<<<<<< HEAD
+=======
+           
+>>>>>>> 4f44eb76397fe00725a4b4c032fcdfc10cbe51d5
         }
 
         isGrounded = Physics2D.OverlapBox(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.5f),
@@ -44,6 +52,10 @@ public class Player : MonoBehaviour
         if(Input.GetKey("space") && isGrounded)
         {
             jumpValue += 20f * Time.deltaTime;
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 4f44eb76397fe00725a4b4c032fcdfc10cbe51d5
 
         }
         /*
@@ -75,6 +87,11 @@ public class Player : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawCube(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.5f), new Vector2(0.9f, 0.2f));
+    }
+
+    public void Recolocar()
+    {
+        transform.position = new Vector3(xInicial, yInicial, 0);
     }
 
 }
