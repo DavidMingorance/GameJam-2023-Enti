@@ -35,7 +35,6 @@ public class Player : MonoBehaviour
         if (!Input.GetKey("space") && isGrounded)
         {
             rb.velocity = new Vector2(moveInput * walkSpeed, rb.velocity.y);
-            anim.SetBool("Jump", true);
         }
 
         isGrounded = Physics2D.OverlapBox(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - 0.5f),
@@ -45,7 +44,6 @@ public class Player : MonoBehaviour
         if(Input.GetKey("space") && isGrounded)
         {
             jumpValue += 20f * Time.deltaTime;
-            anim.SetBool("Jump", true);
 
         }
         /*
@@ -68,16 +66,6 @@ public class Player : MonoBehaviour
             float tempy = jumpValue;
             rb.velocity = new Vector2(tempx, tempy);
             jumpValue = 10f;
-            anim.SetBool("Jump", true);
-        }
-
-        if (moveInput == 0)
-        {
-            anim.SetBool("Andando", false);
-        }
-        else
-        {
-            anim.SetBool("Andando", true);
         }
 
     }
